@@ -203,3 +203,4 @@ cp .env.example .env
 PYTHONPATH=. ./venv/bin/pytest tests/test_api.py -v
 ```
 *(Runs 14/14 automated tests covering Auth, RBAC, Notes CRUD, Admin User Management, Scenario 1, Scenario 2, and Live Index Audit).*
+

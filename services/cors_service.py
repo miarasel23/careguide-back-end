@@ -14,7 +14,7 @@ ALLOWED_ORIGINS: List[str] = [
     "http://127.0.0.1:8000",
 ]
 
-ALLOW_ORIGIN_REGEX: str = r"^https?://.*:(3000|5173|8000|5050)$"
+ALLOW_ORIGIN_REGEX: str = r"^https?://.*"
 
 def setup_cors(app: FastAPI) -> None:
     """
