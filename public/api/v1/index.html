@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Care Guide Interview — Backend REST API Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --border: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #3b82f6;
+      --success: #10b981;
+      --accent: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 32px 16px;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    h1 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      margin-bottom: 12px;
+    }
+    .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-outline { background: transparent; color: #d1d5db; border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--border); color: #fff; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+    h2 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .endpoint {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+    .method {
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .method-get { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .method-post { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .method-put { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .method-delete { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+    .desc { color: var(--muted); font-size: 12px; font-family: 'Plus Jakarta Sans', sans-serif; margin-left: auto; }
+    pre {
+      background: #030712;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #a5f3fc;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">CARE GUIDE INTERVIEW TASK</span>
+      <h1>Secure Note-Taking REST API Documentation</h1>
+      <p style="color: var(--muted); font-size: 14px;">
+        Modular Domain Architecture powered by <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>Mongoose</strong>.
+        Features <strong>Role-Based Access Control (RBAC)</strong>, <strong>MongoDB Aggregation Pipelines</strong> (Scenario 1 &amp; 2), and <strong>ESR-Optimized Indexing</strong> (7 explicit <code>schema.index()</code> definitions with zero redundant indexes).
+      </p>
+      <div class="links">
+        <a href="https://miarasel23.github.io/careguide-font-end/" class="btn btn-primary">Open Live Web Dashboard &rarr;</a>
+        <a href="https://github.com/miarasel23/careguide-back-end-node" target="_blank" class="btn btn-outline">Backend GitHub Repository</a>
+        <a href="https://fagcf-103-77-60-145.run.pinggy-free.link/api/v1" target="_blank" class="btn btn-outline">Active Live API Endpoint</a>
+      </div>
+    </header>
+
+    <div class="card">
+      <h2>1. Authentication Endpoints</h2>
+      <div class="endpoint">
+        <span class="method method-post">POST</span>
+        <span>/api/v1/auth/login</span>
+        <span class="desc">Authenticate with email &amp; password to receive JWT token</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-post">POST</span>
+        <span>/api/v1/auth/register</span>
+        <span class="desc">Register new user account (role: user)</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span>/api/v1/auth/me</span>
+        <span class="desc">Fetch currently authenticated user profile</span>
+      </div>
+      <p style="font-size: 12px; color: var(--muted); margin-top: 8px;"><strong>Default Demo Accounts:</strong> Admin (<code>admin@example.com</code> / <code>Admin@123</code>), User (<code>user@example.com</code> / <code>User@123</code>)</p>
+    </div>
+
+    <div class="card">
+      <h2>2. Notes Management (RBAC &amp; Pagination)</h2>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span>/api/v1/notes?page=1&amp;limit=10</span>
+        <span class="desc">List user's own notes (Admin views all notes)</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-post">POST</span>
+        <span>/api/v1/notes</span>
+        <span class="desc">Create note { title, content }</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-put">PUT</span>
+        <span>/api/v1/notes/:id</span>
+        <span class="desc">Update existing note</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-delete">DELETE</span>
+        <span>/api/v1/notes/:id</span>
+        <span class="desc">Delete personal note (Admin can delete any note)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>3. Admin User Management (Role Protected)</h2>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span>/api/v1/admin/users?page=1&amp;limit=10</span>
+        <span class="desc">List all registered users (Admin only)</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-post">POST</span>
+        <span>/api/v1/admin/users</span>
+        <span class="desc">Create user with role and interests array</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-put">PUT</span>
+        <span>/api/v1/admin/users/:id</span>
+        <span class="desc">Update user credentials, role or interests</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-delete">DELETE</span>
+        <span>/api/v1/admin/users/:id</span>
+        <span class="desc">Delete user account</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>4. MongoDB Aggregation Pipelines (Technical Interview Requirement)</h2>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span>/api/v1/aggregations/group-by-interests</span>
+        <span class="desc"><strong>Scenario 1:</strong> Group users by interests via single collection.aggregate()</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span>/api/v1/aggregations/user-posts?userId=:id</span>
+        <span class="desc"><strong>Scenario 2:</strong> Retrieve user and join posts via single $lookup stage</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span>/api/v1/aggregations/indexes</span>
+        <span class="desc">Inspect live MongoDB collection indexes (7 custom ESR indexes)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>5. Candidate Contact Information</h2>
+      <p style="font-size: 13px; color: #cbd5e1;">
+        Candidate: <strong>Md Rasel Mia</strong><br>
+        Phone: <strong>01997709990</strong><br>
+        Email: <strong>eng.rasel1994@gmail.com</strong>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+
