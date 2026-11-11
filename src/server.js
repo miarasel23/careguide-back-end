@@ -16,7 +16,7 @@ async function startServer() {
     }
 
     // 3. Start Express HTTP Server
-    server = app.listen(config.port, () => {
+    server = app.listen(config.port, "0.0.0.0", () => {
       console.log(`=======================================================`);
       console.log(`  🚀 Secure Note-Taking REST API Server Running`);
       console.log(`  📡 Port: http://localhost:${config.port}`);

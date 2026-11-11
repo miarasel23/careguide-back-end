@@ -204,3 +204,4 @@ npm run dev
 npm test
 ```
 Runs the 14/14 automated test suite verifying all routes, RBAC boundaries, aggregations, and indexes.
+
