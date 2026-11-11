@@ -1,0 +1,38 @@
+{
+  "name": "interview-back-end-node",
+  "version": "1.0.0",
+  "description": "Secure Note-Taking REST API with RBAC, MongoDB Aggregations, and Optimized Indexing using Node.js, Express.js, and Mongoose (Care Guide Interview Architecture)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "seed": "node src/seeds/seeder.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.3",
+    "supertest": "^7.0.0"
+  },
+  "keywords": [
+    "rest-api",
+    "nodejs",
+    "express",
+    "mongoose",
+    "mongodb",
+    "jwt",
+    "rbac",
+    "indexing",
+    "aggregation"
+  ],
+  "author": "Md Rasel Mia",
+  "license": "ISC"
+}
