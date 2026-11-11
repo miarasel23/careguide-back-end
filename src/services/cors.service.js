@@ -6,20 +6,23 @@ const config = require("../core/config");
  * Mirrors TripBackend/services/cors_service.py
  */
 function setupCors() {
-  const allowedOrigin = config.corsOrigin;
-
   return cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, postman) or matching origin
-      if (!origin || allowedOrigin === "*" || allowedOrigin.split(",").includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error(`Not allowed by CORS: ${origin}`));
-      }
+      // Allow all origins (including github.io, localhost, render.com, etc.)
+      callback(null, origin || true);
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept", "X-Requested-With"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Accept",
+      "X-Requested-With",
+      "X-Pinggy-No-Screen",
+      "x-pinggy-no-screen",
+      "x-render-routing",
+    ],
     credentials: true,
+    optionsSuccessStatus: 204,
   });
 }
 

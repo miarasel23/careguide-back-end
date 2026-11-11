@@ -14,3 +14,4 @@ services:
         value: 7d
       - key: CORS_ORIGIN
         value: "*"
+
